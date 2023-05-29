@@ -1,4 +1,4 @@
-@AddAVideo
+@AddAVideo @VAChallenge
 Feature: Upload video to video indexer service
 
   As a User, I can upload video to the video indexer service to derive relevant video insights.

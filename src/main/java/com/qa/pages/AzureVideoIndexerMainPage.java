@@ -1,7 +1,7 @@
 package com.qa.pages;
 
+import com.qa.common.WebDriverFactoryStaticThreadLocal;
 import com.qa.common.CommonAction;
-import com.qa.common.CommonDriver;
 import com.qa.common.JavaScriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AzureVideoIndexerMainPage extends JavaScriptExecutor {
+public class AzureVideoIndexerMainPage extends JavaScriptExecutor{
 
     public WebDriver driver;
 
@@ -35,7 +35,6 @@ public class AzureVideoIndexerMainPage extends JavaScriptExecutor {
     private final By SearchListViewLastModifiedTitleLocator = By.xpath("/html/body/app-root/div/div[2]/vi-gallery/vi-gallery-common/section/div[2]/vi-gallery-list-container/div/vi-gallery-list-view/div/div[1]/span[4]/span/div/div[1]/span");
 
 
-
     public AzureVideoIndexerMainPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -47,7 +46,7 @@ public class AzureVideoIndexerMainPage extends JavaScriptExecutor {
     List<String> value5 = new ArrayList<String>();
 
     public String GetPageTitle() {
-        return CommonDriver.getdriver().getTitle();
+        return WebDriverFactoryStaticThreadLocal.getdriver().getTitle();
     }
 
     public void TypeSearchBoxTextArea(String FileName) {

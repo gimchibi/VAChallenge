@@ -1,6 +1,6 @@
 package com.qa.mystepdefs;
 
-import com.qa.common.CommonDriver;
+import com.qa.common.WebDriverFactoryStaticThreadLocal;
 import com.qa.Utils.TestProperites;
 import com.qa.pages.AzureVideoIndexerMainPage;
 import io.cucumber.java.en.And;
@@ -16,14 +16,14 @@ public class AzureVideoIndexerMainPageSteps {
 
     @Given("I am on the Azure Video Indexer Main page")
     public void i_am_on_the_VA_Main() throws IOException, InterruptedException {
-        AzureVideoIndexerMainPage = new AzureVideoIndexerMainPage(CommonDriver.getdriver());
+        AzureVideoIndexerMainPage = new AzureVideoIndexerMainPage(WebDriverFactoryStaticThreadLocal.getdriver());
         Thread.sleep(5000);
         Assert.assertEquals(AzureVideoIndexerMainPage.GetPageTitle(), TestProperites.loginprop().getProperty("AzureMainPageTitle"));
     }
 
     @Then("The page displays a search box where a search {} query can be entered")
     public void AC1SearchQueryBoxCanEntered(String FileName) {
-        AzureVideoIndexerMainPage = new AzureVideoIndexerMainPage(CommonDriver.getdriver());
+        AzureVideoIndexerMainPage = new AzureVideoIndexerMainPage(WebDriverFactoryStaticThreadLocal.getdriver());
         AzureVideoIndexerMainPage.TypeSearchBoxTextArea(FileName);
         AzureVideoIndexerMainPage.ClickSearchFilterRightArrow();
     }

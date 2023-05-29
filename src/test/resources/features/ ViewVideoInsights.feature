@@ -1,4 +1,4 @@
-@ViewVideoInsights
+@ViewVideoInsights @VAChallenge
 Feature:Upload video to video indexer service
 
   As a User, after uploading and creating an index for a video, I am able to click on the video to view video playback along with insights extracted.

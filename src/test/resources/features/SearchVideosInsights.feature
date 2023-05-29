@@ -1,4 +1,4 @@
-@SearchVideoInsights
+@SearchVideoInsights @VAChallenge
 Feature: Search video indexer service
 
   As a User, I can search for videos containing any text, person, insights or object specified within the indexed videos visible to me.

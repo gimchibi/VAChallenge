@@ -7,15 +7,15 @@ public class JavaScriptExecutor {
 
     // calling the method
     public static void DrawBorder(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor) CommonDriver.getdriver();
+        JavascriptExecutor js = (JavascriptExecutor) WebDriverFactoryStaticThreadLocal.getdriver();
         js.executeScript("arguments[0].style.border='3px solid green'", element);
     }
     public static void DrawBarLength(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor) CommonDriver.getdriver();
+        JavascriptExecutor js = (JavascriptExecutor) WebDriverFactoryStaticThreadLocal.getdriver();
         js.executeScript("arguments[0].style.left= '98.00%'", element);
     }
     public static void DrawBarWidth(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor) CommonDriver.getdriver();
+        JavascriptExecutor js = (JavascriptExecutor) WebDriverFactoryStaticThreadLocal.getdriver();
         js.executeScript("arguments[0].style.width= '98.00%'", element);
     }
 }

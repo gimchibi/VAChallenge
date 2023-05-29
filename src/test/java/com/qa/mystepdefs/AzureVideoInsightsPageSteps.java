@@ -1,6 +1,6 @@
 package com.qa.mystepdefs;
 
-import com.qa.common.CommonDriver;
+import com.qa.common.WebDriverFactoryStaticThreadLocal;
 import com.qa.Utils.TestProperites;
 import com.qa.pages.AzureVideoInsightsPage;
 import io.cucumber.java.en.And;
@@ -15,7 +15,7 @@ public class AzureVideoInsightsPageSteps {
 
     @Then("The page contains a video player allowing playback of the current selected video")
     public void AC1MoveVideotoEnding() throws InterruptedException {
-        AzureVideoInsightsPage = new AzureVideoInsightsPage(CommonDriver.getdriver());
+        AzureVideoInsightsPage = new AzureVideoInsightsPage(WebDriverFactoryStaticThreadLocal.getdriver());
         AzureVideoInsightsPage.MovieVideoToEnding();
     }
     @And("I playback current selected video")
