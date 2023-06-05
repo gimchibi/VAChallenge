@@ -19,7 +19,6 @@ public class WebDriverFactoryStaticThreadLocal {
         chromePrefs.put("download.default_directory", downloadDir);
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", chromePrefs);
-     //   driver = new ChromeDriver(options);
         driver.set(new ChromeDriver(options));
     }
 
