@@ -54,7 +54,7 @@ public class AzureVideoInsightsPage extends JavaScriptExecutor {
     public void MovieVideoToEnding() throws InterruptedException {
         Actions action = new Actions(driver);
         WebElement we = driver.findElement(VideoPlayButtonLocator);
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         action.moveToElement(we).moveToElement(driver.findElement(VideoPlayButtonLocator)).click().build().perform();
         WebElement Length = driver.findElement(VideoBarLengthLocator);
         DrawBarLength(Length);

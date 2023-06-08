@@ -11,6 +11,7 @@ Feature: Search video indexer service
   Scenario: Search a Video Insights
     Given I am on the Azure Video Indexer Main page
     Then The page displays a search box where a search GovTechRewind query can be entered
+    And I filter my InsightType query Language and English
     And Clicking Search will perform the search GovTechRewind query and display relevant search results
     And The search query bar allows the filtering of search results by Scope of search
     And The search query bar allows the filtering of search results by Insight Type

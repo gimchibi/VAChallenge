@@ -18,4 +18,8 @@ public class JavaScriptExecutor {
         JavascriptExecutor js = (JavascriptExecutor) WebDriverFactoryStaticThreadLocal.getdriver();
         js.executeScript("arguments[0].style.width= '98.00%'", element);
     }
+    public static void InsightTypeText(WebElement element,String Text){
+        JavascriptExecutor js = (JavascriptExecutor) WebDriverFactoryStaticThreadLocal.getdriver();
+        js.executeScript("arguments[0].style.title= '"+Text+"'", element);
+    }
 }

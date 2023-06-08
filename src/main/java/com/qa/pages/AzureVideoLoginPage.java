@@ -15,7 +15,6 @@ public class AzureVideoLoginPage {
     private final By UserPasswordInputLocation = By.name("Passwd");
     private final By UserPasswordNextButtonLocator = By.xpath(" //*[@id='passwordNext']/div/button");
 
-
     public AzureVideoLoginPage(WebDriver driver) {
         this.driver = driver;}
 

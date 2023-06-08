@@ -12,7 +12,7 @@ Feature: Upload video to video indexer service
     And I click on the Upload button
     Then The page allows the selection of a file for uploading or the user can supply a url to a video for indexing
     And I choose FileUpload option
-    Then The video source language can be specific in Total: 81
+    Then The video source language can be specific in Total: 66
     Then The page allows privacy to be set for the video insight
     Then An advanced options section should be able to to allow user to choose additional options for uploading FileUpload
     And Clicking the upload button will start the indexing process

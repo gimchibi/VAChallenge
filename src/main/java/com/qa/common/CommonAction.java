@@ -8,12 +8,6 @@ import java.time.Duration;
 
 public class CommonAction extends JavaScriptExecutor {
 
-    public WebDriver driver;
-
-    public CommonAction() {
-
-    }
-
     public static void ClickAction(By by){
        try {
         WebDriverWait wait = new WebDriverWait(WebDriverFactoryStaticThreadLocal.getdriver(), Duration.ofSeconds(30));
@@ -67,9 +61,11 @@ public class CommonAction extends JavaScriptExecutor {
     }
 
     public static String waitforNotification(By by){
+        WebDriverWait wait = new WebDriverWait(WebDriverFactoryStaticThreadLocal.getdriver(), Duration.ofSeconds(800));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         WebElement Element = WebDriverFactoryStaticThreadLocal.getdriver().findElement(by);
-        WebDriverWait wait = new WebDriverWait(WebDriverFactoryStaticThreadLocal.getdriver(), Duration.ofSeconds(500));
-        wait.until(ExpectedConditions.textToBePresentInElement(Element,"2"));
+        System.out.println("finish indexing");
+        wait.until(ExpectedConditions.textToBePresentInElement(Element,"1"));
         String ValueNonEmpty = Element.getText();
         DrawBorder(Element);
         return ValueNonEmpty;

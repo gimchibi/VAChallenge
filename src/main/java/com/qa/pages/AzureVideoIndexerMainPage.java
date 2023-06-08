@@ -14,9 +14,11 @@ import java.util.List;
 public class AzureVideoIndexerMainPage extends JavaScriptExecutor{
 
     public WebDriver driver;
-
     private final By SearchBoxTextAreaLocator = By.id("viFilterSearchInput");
     private final By SearchFilterRightArrowLocator = By.xpath("//*[@id='filterGalleryButton']/i[2]");
+    private final By InsightTypeArrowLocator = By.xpath("//*[@id='filterActions_1']/p-dropdown/div/div[2]/span/i");
+    private final By InsightTypeLanguageArrowLocator = By.xpath("//*[@id='id_1_1_language']/p-dropdown/div/div[2]/span/i");
+    private final By InSightTypeDropDownListLocator = By.xpath("/html/body/app-root/div/div[2]/vi-gallery/vi-gallery-common/section/div[1]/section/div/div/vi-gallery-search-input/vi-gallery-search-input-common/div/vi-gallery-search-filters/div/div[2]/div[2]/app-filter-item/div/div[1]/app-vi-fluent-action-menu/div/p-dropdown/div/div[4]/div/ul/p-dropdownitem");
     private final By SearchButtonLocator = By.xpath("//*[@id='search']/span");
     private final By SearchQueryLabelLocator = By.xpath("//*[@id='gallerySearchForm']/div/vi-gallery-search-input/vi-gallery-search-input-common/div/div/div/div[1]/div/div/vi-filter-tags/div/div/div/span");
     private final By SearchFilterButtonLocator = By.id("filterGalleryButton");
@@ -89,12 +91,31 @@ public class AzureVideoIndexerMainPage extends JavaScriptExecutor{
     public void ClickSearchInSightArrowButton() {
         CommonAction.ClickAction(SearchInSightArrowButtonLocator);
     }
+    public void ClickInSightTypeArrow(){
+        CommonAction.ClickAction(InsightTypeArrowLocator);
+    }
+    public void ClickInSightType(String InSightType){
+        List<WebElement> ClickInSightTypeDropDownList = driver.findElements(InSightTypeDropDownListLocator);
+        int ClickInSightTypeDropDownListCount= ClickInSightTypeDropDownList.size();
+        for (int i = 1; i <= ClickInSightTypeDropDownListCount; i++) {
+            String DropDownPath = "/html/body/app-root/div/div[2]/vi-gallery/vi-gallery-common/section/div[1]/section/div/div/vi-gallery-search-input/vi-gallery-search-input-common/div/vi-gallery-search-filters/div/div[2]/div[2]/app-filter-item/div/div[1]/app-vi-fluent-action-menu/div/p-dropdown/div/div[4]/div/ul/p-dropdownitem[" + i + "]/li/div/span";
+            WebElement InsightTypeEle = driver.findElement(By.xpath(DropDownPath));
+            if (InSightType.equalsIgnoreCase(InsightTypeEle.getText()))
+                driver.findElement(By.xpath(DropDownPath)).click();
+        }
+    }
+    public void ClickInsightTypeLanguageArrow(){
+        CommonAction.ClickAction(InsightTypeLanguageArrowLocator);
+    }
+    public void SelectLanguageType(String InsightTypeValue){
+        driver.findElement(By.xpath("//*[@id='"+InsightTypeValue+"']/span")).click();
+    }
 
     public List<String> SearchInsightsTotalCount() {
         List<WebElement> SearchInDropDownList = driver.findElements(SearchInSightDropDownListLocator);
         int SearchInDropDownListCount = SearchInDropDownList.size();
         for (int i = 1; i <= SearchInDropDownListCount; i++) {
-            String ButtonTypePath = " /html/body/app-root/div/div[2]/vi-gallery/vi-gallery-common/section/div[1]/section/div/div/vi-gallery-search-input/vi-gallery-search-input-common/div/vi-gallery-search-filters/div/div[2]/div[2]/app-filter-item/div/div[1]/app-vi-fluent-action-menu/div/p-dropdown/div/div[4]/div/ul/p-dropdownitem[" + i + "]/li/div/span";
+            String ButtonTypePath = "/html/body/app-root/div/div[2]/vi-gallery/vi-gallery-common/section/div[1]/section/div/div/vi-gallery-search-input/vi-gallery-search-input-common/div/vi-gallery-search-filters/div/div[2]/div[2]/app-filter-item/div/div[1]/app-vi-fluent-action-menu/div/p-dropdown/div/div[4]/div/ul/p-dropdownitem[" + i + "]/li/div/span";
             WebElement ButtonType = driver.findElement(By.xpath(ButtonTypePath));
             ButtonType.getText();
             DrawBorder(ButtonType);

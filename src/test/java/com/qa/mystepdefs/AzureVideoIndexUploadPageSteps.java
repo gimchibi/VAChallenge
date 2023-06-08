@@ -14,7 +14,6 @@ public class AzureVideoIndexUploadPageSteps {
 
     private AzureVideoIndexUploadPage AzureVideoIndexUploadPage;
 
-
     @And("I click on the Upload button")
     public void ClickUploadButton(){
         AzureVideoIndexUploadPage = new AzureVideoIndexUploadPage(WebDriverFactoryStaticThreadLocal.getdriver());
@@ -63,11 +62,12 @@ public class AzureVideoIndexUploadPageSteps {
         Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(0), "General settings");
         if (Choice.equalsIgnoreCase("EnterFileURL"))
         Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(1), "File names");
-
         Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(2), "Indexing presets");
         Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(3), "People models");
         Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(4), "Brand categories");
-        Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(5), "File information");
+        Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(5), "Custom logos");
+        Assert.assertEquals(AzureVideoIndexUploadPage.CheckAdvanceOptions(Choice).get(6), "File information");
+
     }
     @And("Clicking the upload button will start the indexing process")
     public void AC5ProceedUploadVideoFile(){
@@ -79,7 +79,7 @@ public class AzureVideoIndexUploadPageSteps {
     public void NotificationReceived() throws IOException {
         AzureVideoIndexUploadPage = new AzureVideoIndexUploadPage(WebDriverFactoryStaticThreadLocal.getdriver());
         AzureVideoIndexUploadPage.ClickUploadCloseButton();
-        Assert.assertEquals(AzureVideoIndexUploadPage.waitfornotification(), "2");
+        Assert.assertEquals(AzureVideoIndexUploadPage.waitfornotification(), "1");
         AzureVideoIndexUploadPage.ClickNotification();
         Assert.assertEquals(AzureVideoIndexUploadPage.CheckNotificationSuccess(), TestProperites.loginprop().getProperty("AzureVideoFileName") + " indexed");
         Assert.assertEquals(AzureVideoIndexUploadPage.VideoVisibleLibrary(), TestProperites.loginprop().getProperty("AzureVideoFileName"));

@@ -27,9 +27,17 @@ public class AzureVideoIndexerMainPageSteps {
         AzureVideoIndexerMainPage.TypeSearchBoxTextArea(FileName);
         AzureVideoIndexerMainPage.ClickSearchFilterRightArrow();
     }
+    @And("I filter my InsightType query {} and {}")
+    public void FilterInsightType(String InSightType,String InsightTypeValue){
+        AzureVideoIndexerMainPage.ClickInSightTypeArrow();
+        AzureVideoIndexerMainPage.ClickInSightType(InSightType);
+        AzureVideoIndexerMainPage.ClickInsightTypeLanguageArrow();
+        AzureVideoIndexerMainPage.SelectLanguageType(InsightTypeValue);
+    }
 
     @And("Clicking Search will perform the search {} query and display relevant search results")
     public void AC2SearchResults(String FileName) {
+       // AzureVideoIndexerMainPage.ClickSearchInSightArrowButton();
         AzureVideoIndexerMainPage.ClickSearchButton();
         Assert.assertTrue(AzureVideoIndexerMainPage.SearchQueryLabel().contains(FileName));
     }
@@ -51,14 +59,13 @@ public class AzureVideoIndexerMainPageSteps {
     @And("The search query bar allows the filtering of search results by Insight Type")
     public void AC3FilterSearchInsightType() {
         AzureVideoIndexerMainPage.ClickSearchInDownArrowButton();
-        AzureVideoIndexerMainPage.ClickSearchInSightArrowButton();
         System.out.println(AzureVideoIndexerMainPage.SearchInsightsTotalCount());
     }
 
     @Then("a search is performed, the page will display a listing of {} {} videos that have been indexed")
     public void AC4DisplayListSearchVideo(int TotalVideos, String FileName) throws InterruptedException {
         AzureVideoIndexerMainPage.ClickSearchButton();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         Assert.assertEquals(AzureVideoIndexerMainPage.TotalVideosCountIndexed(), TotalVideos);
         for (int i = 0; i <= TotalVideos - 1; i++) {
             Assert.assertEquals(AzureVideoIndexerMainPage.TotalVideosIndexed().get(i), FileName);
